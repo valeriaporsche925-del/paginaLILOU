@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LILOU · Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#f5d5e0;--pink2:#fbeaf0;--lav:#dcd3f1;--lav2:#f1ecfa;--ink:#111;--bg:#fff;--muted:#7a7380;--line:#e9e2ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pink:#4a3340;--pink2:#2f2229;--lav:#3f3858;--lav2:#272236;--ink:#f6f1f8;--bg:#141118;--muted:#a79fb0;--line:#332c3b;color-scheme:dark}}
+:root[data-theme="dark"]{--pink:#4a3340;--pink2:#2f2229;--lav:#3f3858;--lav2:#272236;--ink:#f6f1f8;--bg:#141118;--muted:#a79fb0;--line:#332c3b;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 15px/1.6 Jost,system-ui,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;margin:0;line-height:1.1}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.promo{background:var(--ink);color:var(--bg);text-align:center;padding:8px 12px;font-size:.8rem;letter-spacing:.08em}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px 4vw}
+.logo{font:500 1.9rem "Cormorant Garamond",Georgia,serif;letter-spacing:.35em;padding-left:.35em}
+nav{display:flex;gap:22px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase}
+nav button{padding:4px 0;border-bottom:1px solid transparent}
+nav button[aria-pressed="true"],nav button:hover{border-color:var(--ink)}
+.bag{justify-self:end;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:540px;background:linear-gradient(100deg,var(--pink2),var(--lav2))}
+.hero .tx{padding:8vw 5vw;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:400}
+.hero h1 i{font-weight:400}
+.hero p{max-width:40ch;color:var(--muted);margin:0}
+.btn{background:var(--ink);color:var(--bg);padding:14px 34px;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;font-weight:400;align-self:flex-start}
+.btn.o{background:none;color:var(--ink);border:1px solid var(--ink)}
+.hero .art{display:flex;align-items:flex-end;justify-content:center;gap:0;padding:40px 4vw 0;background:radial-gradient(ellipse at 50% 100%,var(--pink) 0 55%,transparent 56%)}
+.hero .art svg{width:34%;max-width:200px;margin:0 -2%}
+.hero .art svg:nth-child(2){width:42%;max-width:250px;position:relative;top:0}
+.cats{display:grid;grid-template-columns:repeat(3,1fr)}
+.cat{padding:42px 20px;text-align:center;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cat:nth-child(1){background:var(--pink2)}.cat:nth-child(2){background:var(--lav2)}
+.cat h3{font-size:1.5rem}.cat small{color:var(--muted)}
+.sec{padding:56px 4vw}
+.sec>h2{font-size:2.4rem;text-align:center;margin-bottom:6px}
+.sec>p{text-align:center;color:var(--muted);margin:0 0 36px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 18px}
+.vis{position:relative;aspect-ratio:1;display:grid;place-items:center;transition:background .25s}
+.vis svg{width:78%}
+.tag{position:absolute;top:10px;left:10px;background:var(--bg);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px}
+.pn{margin-top:12px;font:500 1.25rem "Cormorant Garamond",Georgia,serif}
+.pd{color:var(--muted);font-size:.82rem;min-height:2.6em}
+.sw{display:flex;gap:7px;margin:8px 0}
+.sw button{width:18px;height:18px;border-radius:50%;border:1px solid var(--line);box-shadow:0 0 0 2px var(--bg)}
+.sw button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--bg),0 0 0 3px var(--ink)}
+.pp{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.addb{border:1px solid var(--ink);padding:8px 14px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.addb:hover{background:var(--ink);color:var(--bg)}
+.band{background:var(--lav2);text-align:center;padding:48px 5vw}
+.band h2{font-size:2rem;margin-bottom:8px}
+footer{padding:36px 4vw;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem;text-align:center}
+.ov{position:fixed;inset:0;background:rgba(17,12,22,.5);display:none;z-index:20}
+.ov.open{display:block}
+.drawer{position:absolute;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);padding:24px;display:flex;flex-direction:column;gap:10px}
+.drawer .hd{display:flex;justify-content:space-between;align-items:baseline}
+.drawer h2{font-size:1.8rem}
+#items{flex:1;overflow-y:auto}
+.row{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.mini{width:62px;height:62px;flex:none;display:grid;place-items:center}.mini svg{width:70%}
+.row .t{flex:1;line-height:1.3}.row .t b{font:500 1.1rem "Cormorant Garamond",serif}
+.q button{width:26px;height:26px;border:1px solid var(--line)}
+.free{font-size:.8rem;color:var(--muted);background:var(--pink2);padding:8px 12px}
+.tot{display:flex;justify-content:space-between;font-size:1.1rem}
+.mod{position:absolute;inset:0;display:grid;place-items:center;padding:16px}
+.box{background:var(--bg);max-width:460px;width:100%;max-height:92vh;overflow-y:auto;padding:32px;text-align:center}
+.box h2{font-size:2rem}
+.offer{display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:center;text-align:left;background:linear-gradient(120deg,var(--pink2),var(--lav2));padding:16px;margin:18px 0}
+.was{text-decoration:line-through;color:var(--muted)}
+.btns{display:flex;flex-direction:column;gap:8px}
+.btns .btn{align-self:stretch}
+.lk{color:var(--muted);text-decoration:underline;padding:8px}
+form{display:flex;flex-direction:column;gap:10px;text-align:left;margin:16px 0}
+input{padding:13px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+input:focus-visible{outline:2px solid var(--ink)}
+@media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero .art{min-height:300px}nav{display:none}header{grid-template-columns:1fr auto}.logo{padding:0}.cats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="promo">Envío gratis en compras desde $599 · Muestra de regalo en tu primer pedido</div>
+<header>
+  <nav id="nav"><button data-f="all" aria-pressed="true">Todo</button><button data-f="skin" aria-pressed="false">Skincare</button><button data-f="make" aria-pressed="false">Maquillaje</button></nav>
+  <span class="logo">LILOU</span>
+  <button class="bag" id="open">Bolsa (<span id="count">0</span>)</button>
+</header>
+
+<section class="hero">
+  <div class="tx">
+    <h1>Rosa cristal,<br><i>la nueva colección</i></h1>
+    <p>Labiales satinados, rubores en crema y skincare que te deja la piel luminosa. Colores suaves para todos los días.</p>
+    <button class="btn" onclick="go()">Comprar ahora</button>
+  </div>
+  <div class="art" id="heroArt"></div>
+</section>
+
+<section class="cats">
+  <div class="cat"><h3>Labios</h3><small>Labiales y brillos</small></div>
+  <div class="cat"><h3>Rostro</h3><small>Bases y rubores</small></div>
+  <div class="cat" style="background:var(--bg)"><h3>Skincare</h3><small>Sérums y cremas</small></div>
+</section>
+
+<section class="sec" id="shop">
+  <h2>Los más pedidos</h2>
+  <p>Elige tu tono y agrégalo a la bolsa.</p>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="band"><h2>Rutina de 3 pasos</h2><p style="color:var(--muted);margin:0">Limpia, trata e hidrata. Todo en tonos suaves para tu tocador.</p></section>
+<footer>© 2026 LILOU Beauty · Envíos a todo México · Cambios y devoluciones en 30 días</footer>
+
+<div class="ov" id="cartOv"><aside class="drawer" role="dialog" aria-label="Bolsa de compras">
+  <div class="hd"><h2>Tu bolsa</h2><button class="lk" id="close">Cerrar</button></div>
+  <div class="free" id="free"></div>
+  <div id="items"></div>
+  <div class="tot"><span>Total</span><b id="tot">$0</b></div>
+  <button class="btn" id="pay" style="align-self:stretch;text-align:center">Pagar</button>
+</aside></div>
+<div class="ov" id="modOv"><div class="mod"><div class="box" id="box" role="dialog" aria-live="polite"></div></div></div>
+
+<script>
+const OFFER=30,LIP=8;
+const SH={rose:["Rosa Pétalo","#e58aa8"],mauve:["Malva","#a97ab5"],nude:["Nude Seda","#c98c80"],berry:["Frambuesa","#a3365f"],blush:["Rubor Peonía","#f0a3b5"],lilac:["Lila Suave","#c8b4ea"]};
+const P=[
+{id:1,n:"Sérum Vitamina C",d:"Ilumina y unifica el tono. 30 ml.",c:"skin",p:289,t:"dropper",bg:"var(--pink2)",tag:"Nuevo"},
+{id:2,n:"Crema Hidratante",d:"Hidratación 48 horas, piel suave.",c:"skin",p:239,t:"jar",bg:"var(--lav2)"},
+{id:3,n:"Gel Limpiador",d:"Limpia sin resecar. 150 ml.",c:"skin",p:179,t:"tube",bg:"var(--pink2)"},
+{id:4,n:"Mascarilla Rosa",d:"Arcilla rosa purificante.",c:"skin",p:149,t:"jar",bg:"var(--lav2)",col:"#f0b9cd"},
+{id:5,n:"Base Satinada",d:"Cobertura media, acabado natural.",c:"make",p:259,t:"pump",bg:"var(--lav2)"},
+{id:6,n:"Rubor en Crema",d:"Color jugoso que se difumina.",c:"make",p:169,t:"compact",bg:"var(--pink2)",sh:["blush","rose","lilac"],tag:"Favorito"},
+{id:7,n:"Paleta de Sombras",d:"9 tonos rosa, malva y neutro.",c:"make",p:329,t:"palette",bg:"var(--lav2)"},
+{id:8,n:"Labial Satinado",d:"Color intenso, labios cómodos.",c:"make",p:189,t:"lip",bg:"var(--pink2)",sh:["rose","mauve","nude","berry"],tag:"Top ventas"}
+];
+function art(t,c){c=c||"#e58aa8";const s='<svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',e='</svg>',sh='<ellipse cx="100" cy="206" rx="46" ry="6" fill="#000" opacity=".1"/>';
+ if(t=="lip")return s+sh+'<rect x="78" y="128" width="44" height="76" rx="4" fill="#161616"/><rect x="78" y="118" width="44" height="14" fill="#d8bf93"/><rect x="82" y="96" width="36" height="24" fill="#d8bf93"/><path d="M86 98V56l28-12v54z" fill="'+c+'"/><path d="M86 56l28-12v8l-28 12z" fill="#fff" opacity=".35"/><rect x="82" y="140" width="6" height="56" fill="#fff" opacity=".12"/>'+e;
+ if(t=="dropper")return s+sh+'<rect x="72" y="86" width="56" height="118" rx="10" fill="#f6d9a8" opacity=".9"/><rect x="72" y="110" width="56" height="94" rx="10" fill="#f2c27a"/><rect x="90" y="52" width="20" height="36" fill="#161616"/><ellipse cx="100" cy="44" rx="13" ry="18" fill="#161616"/><rect x="80" y="140" width="40" height="30" fill="#fff"/><rect x="85" y="150" width="30" height="3" fill="#111"/><rect x="85" y="158" width="20" height="3" fill="#999"/>'+e;
+ if(t=="jar")return s+sh+'<rect x="52" y="120" width="96" height="84" rx="12" fill="#fff" stroke="#ddd"/><rect x="48" y="92" width="104" height="32" rx="6" fill="'+(c=="#e58aa8"?"#161616":c)+'"/><rect x="70" y="150" width="60" height="3" fill="#111"/><rect x="82" y="160" width="36" height="3" fill="#bbb"/>'+e;
+ if(t=="tube")return s+sh+'<path d="M72 60h56l-4 140H76z" fill="#fff" stroke="#ddd"/><rect x="72" y="40" width="56" height="24" rx="5" fill="#161616"/><rect x="82" y="110" width="36" height="3" fill="#111"/><rect x="88" y="120" width="24" height="3" fill="#bbb"/><path d="M76 200l-4-24h56l-4 24z" fill="#f5d5e0"/>'+e;
+ if(t=="pump")return s+sh+'<rect x="68" y="92" width="64" height="112" rx="10" fill="#ecc5a8"/><rect x="92" y="54" width="16" height="40" fill="#161616"/><rect x="82" y="44" width="40" height="12" rx="4" fill="#161616"/><rect x="78" y="136" width="44" height="34" fill="#fff"/><rect x="84" y="146" width="32" height="3" fill="#111"/>'+e;
+ if(t=="compact")return s+sh+'<ellipse cx="100" cy="150" rx="70" ry="22" fill="#161616"/><rect x="30" y="126" width="140" height="24" fill="#161616"/><ellipse cx="100" cy="126" rx="70" ry="22" fill="#2a2a2a"/><ellipse cx="100" cy="124" rx="58" ry="17" fill="'+c+'"/><ellipse cx="86" cy="120" rx="20" ry="5" fill="#fff" opacity=".3"/>'+e;
+ if(t=="palette"){let d="";const cs=["#f2b8cb","#d9c3f0","#e9c7b8","#c9a7e6","#f0a3b5","#8e6bb8","#f6dce6","#a6578b","#3a2a45"];cs.forEach((x,i)=>d+='<rect x="'+(52+(i%3)*30)+'" y="'+(84+Math.floor(i/3)*26)+'" width="26" height="22" rx="3" fill="'+x+'"/>');return s+sh+'<rect x="40" y="62" width="120" height="142" rx="8" fill="#161616"/><rect x="46" y="70" width="108" height="14" fill="#d8bf93" opacity=".0"/>'+d+'<rect x="52" y="170" width="96" height="3" fill="#d8bf93"/><rect x="52" y="180" width="60" height="3" fill="#888"/>'+e}
+ return s+e}
+let cart=[],filter="all",sel={},offerShade="rose";
+const $=i=>document.getElementById(i),fmt=n=>"$"+n.toLocaleString("es-MX");
+const pr=i=>i.deal?i.p-OFFER:i.p;
+const col=(p,k)=>k?SH[k][1]:(p.col||"#e58aa8");
+function hero(){$("heroArt").innerHTML=art("dropper")+art("lip","#e58aa8")+art("compact","#f0a3b5")}
+function grid(){
+ $("grid").innerHTML=P.filter(x=>filter=="all"||x.c==filter).map(x=>{
+  const k=sel[x.id]||(x.sh&&x.sh[0]);
+  return '<article><div class="vis" id="v'+x.id+'" style="background:'+x.bg+'">'+(x.tag?'<span class="tag">'+x.tag+'</span>':'')+art(x.t,col(x,k))+'</div><div class="pn">'+x.n+'</div><div class="pd">'+x.d+'</div>'+
+  (x.sh?'<div class="sw">'+x.sh.map(s=>'<button aria-label="'+SH[s][0]+'" title="'+SH[s][0]+'" style="background:'+SH[s][1]+'" aria-pressed="'+(s==k)+'" onclick="pick('+x.id+',\''+s+'\')"></button>').join("")+'</div>':'<div class="sw" style="height:18px"></div>')+
+  '<div class="pp"><span>'+fmt(x.p)+'</span><button class="addb" onclick="add('+x.id+')">Agregar</button></div></article>'}).join("")}
+function pick(id,s){sel[id]=s;grid()}
+function add(id,deal,shade){
+ const p=P.find(x=>x.id==id),k=shade||sel[id]||(p.sh&&p.sh[0])||"",key=id+"|"+k,f=cart.find(i=>i.key==key);
+ if(f)f.q++;else cart.push({...p,key,k,q:1,deal:!!deal});
+ render()}
+function chg(key,d){const i=cart.find(x=>x.key==key);i.q+=d;if(i.q<=0)cart=cart.filter(x=>x.key!=key);render()}
+const sum=()=>cart.reduce((s,i)=>s+pr(i)*i.q,0);
+function render(){
+ $("count").textContent=cart.reduce((s,i)=>s+i.q,0);
+ $("items").innerHTML=cart.length?cart.map(i=>'<div class="row"><div class="mini" style="background:'+i.bg+'">'+art(i.t,col(i,i.k))+'</div><div class="t"><b>'+i.n+'</b><br><small>'+(i.k?SH[i.k][0]+" · ":"")+fmt(pr(i))+(i.deal?" (oferta)":"")+'</small></div><div class="q"><button onclick="chg(\''+i.key+'\',-1)" aria-label="Quitar uno">−</button> '+i.q+' <button onclick="chg(\''+i.key+'\',1)" aria-label="Agregar uno">+</button></div></div>').join(""):'<p style="color:var(--muted)">Tu bolsa está vacía.</p>';
+ const t=sum(),r=599-t;$("free").textContent=r>0?"Te faltan "+fmt(r)+" para el envío gratis":"Tienes envío gratis";
+ $("tot").textContent=fmt(t);$("pay").disabled=!cart.length;$("pay").style.opacity=cart.length?1:.4}
+function modal(h){$("box").innerHTML=h;$("modOv").classList.add("open")}
+function closeMod(){$("modOv").classList.remove("open")}
+function closeCart(){$("cartOv").classList.remove("open")}
+function checkout(){
+ if(!cart.length)return;
+ if(cart.some(i=>i.id==LIP))return form();
+ offer()}
+function offer(){
+ const l=P.find(x=>x.id==LIP);
+ modal('<h2>Antes de pagar</h2><p style="color:var(--muted);margin:8px 0 0">Una oferta solo para ti</p><div class="offer"><div class="vis" style="background:var(--bg);aspect-ratio:1" id="ofv">'+art("lip",SH[offerShade][1])+'</div><div><div class="pn" style="margin:0">'+l.n+'</div><p style="margin:4px 0">Por <b>'+fmt(OFFER)+' menos</b>, ¿te interesa llevarte un labial?</p><div class="sw">'+l.sh.map(s=>'<button aria-label="'+SH[s][0]+'" style="background:'+SH[s][1]+'" aria-pressed="'+(s==offerShade)+'" onclick="offerShade=\''+s+'\';offer()"></button>').join("")+'</div><span class="was">'+fmt(l.p)+'</span> <b style="font-size:1.4rem">'+fmt(l.p-OFFER)+'</b></div></div><div class="btns"><button class="btn" onclick="add('+LIP+',true,offerShade);form()">Sí, agregar a mi pedido</button><button class="lk" onclick="form()">No, gracias</button></div>')}
+function form(){
+ modal('<h2>Datos de envío</h2><p style="color:var(--muted);margin:6px 0 0">Total a pagar: <b style="color:var(--ink)">'+fmt(sum())+'</b></p><form onsubmit="done(event)"><input required placeholder="Nombre completo" autocomplete="name"><input required type="email" placeholder="Correo electrónico" autocomplete="email"><input required placeholder="Dirección de envío" autocomplete="street-address"><button class="btn" type="submit" style="align-self:stretch">Confirmar pedido</button></form><button class="lk" onclick="closeMod()">Volver a la tienda</button>')}
+function done(e){e.preventDefault();const t=fmt(sum());cart=[];render();modal('<h2>¡Gracias por tu pedido!</h2><p style="color:var(--muted)">Pagaste '+t+'. Te enviamos la confirmación por correo.</p><button class="btn" style="align-self:stretch" onclick="closeMod();closeCart()">Seguir comprando</button>')}
+function go(){$("shop").scrollIntoView({behavior:"smooth"})}
+$("open").onclick=()=>$("cartOv").classList.add("open");
+$("close").onclick=closeCart;
+$("cartOv").onclick=e=>{if(e.target.id=="cartOv")closeCart()};
+$("modOv").onclick=e=>{if(e.target.id=="modOv"||e.target.classList.contains("mod"))closeMod()};
+$("pay").onclick=checkout;
+$("nav").onclick=e=>{const b=e.target.closest("button");if(!b)return;filter=b.dataset.f;[...$("nav").children].forEach(c=>c.setAttribute("aria-pressed",c==b));grid();go()};
+hero();grid();render();
+</script>
+</body>
+</html>
